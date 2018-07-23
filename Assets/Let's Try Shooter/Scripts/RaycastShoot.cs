@@ -30,7 +30,7 @@ public class RaycastShoot : MonoBehaviour {
 	
 	void Update () {
         // Fireボタンが押され, かつ十分な時間が経過すれば発砲する
-        if (Input.GetButtonDown("Fire1") Time.time > nextFire)
+        if (Input.GetButtonDown("Fire1") && Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
 
@@ -41,6 +41,32 @@ public class RaycastShoot : MonoBehaviour {
             RaycastHit hit;
             // レーザーラインの開始位置と終了位置
             laserline.SetPosition(0, gunEnd.position);
+
+            // 何かに当たった際(光線の初期位置,光線を投射する方向, out, 範囲)
+            // out:戻り値の値に加えて関数からの追加情報も取得
+            if (Physics.Raycast(rayOrigin, fpsCam.transform.forward, out hit, weaponRange))
+            {
+                // 何かを当てた場合
+                laserline.SetPosition(1, hit.point);
+
+                ShootableBox health = hit.collider.GetComponent<ShootableBox>();
+
+                if (health != null)
+                {
+                    health.Damage(gunDamage);
+                }
+
+                // レイキャストでヒットしたら
+                if (hit.rigidbody != null)
+                {
+                    hit.rigidbody.AddForce(hit.normal * hitForce);
+                }
+            }
+            else
+            {
+                // 原点から50ユニット離れている場合（範囲外）
+                laserline.SetPosition(1, rayOrigin + (fpsCam.transform.forward * weaponRange));
+            }
         }
 	}
     private IEnumerator ShotEffect()
