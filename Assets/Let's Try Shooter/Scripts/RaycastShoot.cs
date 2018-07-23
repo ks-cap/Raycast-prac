@@ -5,7 +5,7 @@ public class RaycastShoot : MonoBehaviour {
 
     public int gunDamage = 1;
     // 再度銃を発砲するまでの待機時間
-    public float fireRate = .25f;
+    public float fireRate = 0.25f;
     // 武器（レイキャスト）の範囲
     public float weaponRange = 50f;
     public float hitForce = 100f;
@@ -14,7 +14,7 @@ public class RaycastShoot : MonoBehaviour {
 
     private Camera fpsCam;
     // レーザの見える時間
-    private WaitForSeconds shotDuration = new WaitForSeconds(.07f);
+    private WaitForSeconds shotDuration = new WaitForSeconds(0.07f);
     private AudioSource gunAudio;
     // 直線
     private LineRenderer laserline;
@@ -36,7 +36,7 @@ public class RaycastShoot : MonoBehaviour {
 
             StartCoroutine(ShotEffect());
             // 光線の原点（画面の中心）
-            Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0));
+            Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
             // 光線がオブジェクトに当たったとき返される情報
             RaycastHit hit;
             // レーザーラインの開始位置と終了位置
@@ -69,6 +69,7 @@ public class RaycastShoot : MonoBehaviour {
             }
         }
 	}
+
     private IEnumerator ShotEffect()
     {
         gunAudio.Play();
