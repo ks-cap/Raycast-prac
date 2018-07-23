@@ -4,4 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Let's Try Shooter/Scenes/ShootingWithRaycasts.unity
+    guid: b8ea65f9617327842925e6207a1fcf60
+  m_configObjects: {}

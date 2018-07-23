@@ -2094,7 +2094,7 @@ MonoBehaviour:
   fireRate: 0.25
   weaponRange: 50
   hitForce: 100
-  gunEnd: {fileID: 1505249018}
+  gunEnd: {fileID: 1663607453}
 --- !u!120 &1505249020
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -2360,10 +2360,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1663607453}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: GunEnd
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
